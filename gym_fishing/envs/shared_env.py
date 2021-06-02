@@ -91,7 +91,7 @@ def estimate_policyfn(env, model, reps=1, n=50):
         for obs in state_range:
             action, _state = model.predict(obs)
             if isinstance(action, np.ndarray):
-                action = action[0]
+                action = action  # before it was action = action[0] but problem pf type
 
             fish_population = env.get_fish_population(obs)
             quota = env.get_quota(action)
